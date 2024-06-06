@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ParentCheckbox from './ParentCheckbox';
+import ChildCheckbox from './ChildCheckbox';
+import APIProgressBar from './ProgressBar';
 
-function App() {
+const App = () => {
+  const apiUrls = [
+    'https://jsonplaceholder.typicode.com/posts',
+    'https://jsonplaceholder.typicode.com/comments',
+    'https://jsonplaceholder.typicode.com/albums'
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <div>
+        <ParentCheckbox label="Parent">
+          <ChildCheckbox label="Child 1" />
+          <ChildCheckbox label="Child 2" />
+          <ChildCheckbox label="Child 3" />
+        </ParentCheckbox>
+      </div>
+      <div>
+        <h1>API Progress Bar Example</h1>
+        <APIProgressBar urls={apiUrls} />
+      </div>
+    </>
   );
-}
+};
 
 export default App;
